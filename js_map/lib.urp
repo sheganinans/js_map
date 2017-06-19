@@ -1,0 +1,29 @@
+ffi js_map_ffi
+clientOnly Js_map_ffi.new_map
+clientOnly Js_map_ffi.new_map_with			       
+clientOnly Js_map_ffi.size
+clientOnly Js_map_ffi.clear
+clientOnly Js_map_ffi.delete
+clientOnly Js_map_ffi.entries
+clientOnly Js_map_ffi.get
+clientOnly Js_map_ffi.has
+clientOnly Js_map_ffi.keys
+clientOnly Js_map_ffi.set
+clientOnly Js_map_ffi.values
+clientOnly Js_map_ffi.forEach
+jsFunc Js_map_ffi.new_map=Js_map.new_map
+jsFunc Js_map_ffi.new_map_with=Js_map.new_map_with			       
+jsFunc Js_map_ffi.size=Js_map.size
+jsFunc Js_map_ffi.clear=Js_map.clear
+jsFunc Js_map_ffi.delete=Js_map.delete
+jsFunc Js_map_ffi.entries=Js_map.entries
+jsFunc Js_map_ffi.get=Js_map.get
+jsFunc Js_map_ffi.has=Js_map.has
+jsFunc Js_map_ffi.keys=Js_map.keys
+jsFunc Js_map_ffi.set=Js_map.set
+jsFunc Js_map_ffi.values=Js_map.values
+jsFunc Js_map_ffi.forEach=Js_map.forEach
+file /js_map.js js_map.js
+script js_map.js
+
+js_map

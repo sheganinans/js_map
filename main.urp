@@ -1,0 +1,4 @@
+library js_map
+rewrite url Main/*
+
+main
