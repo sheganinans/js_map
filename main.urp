@@ -1,4 +1,7 @@
 library js_map
 rewrite url Main/*
 
+$/list
+$/listPair
+
 main

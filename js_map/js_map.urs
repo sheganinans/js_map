@@ -5,7 +5,7 @@ val new_map_with : k ::: Type -> v ::: Type -> eq k -> list (k * v) -> transacti
 							       
 val size    : k ::: Type -> v ::: Type -> js_map k v -> transaction int	     
 val clear   : k ::: Type -> v ::: Type -> js_map k v -> transaction unit
-val del     : k ::: Type -> v ::: Type -> js_map k v -> transaction unit
+val delete  : k ::: Type -> v ::: Type -> js_map k v -> k -> transaction unit
 val entries : k ::: Type -> v ::: Type -> js_map k v -> transaction (list (k * v))
 val get     : k ::: Type -> v ::: Type -> js_map k v -> k -> transaction v
 val has     : k ::: Type -> v ::: Type -> js_map k v -> k -> transaction bool

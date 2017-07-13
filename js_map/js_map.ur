@@ -5,7 +5,7 @@ fun new_map_with [k] [v] _ l  = Js_map_ffi.new_map_with l
 							       
 fun size    [k] [v] m   = Js_map_ffi.size    m
 fun clear   [k] [v] m   = Js_map_ffi.clear   m
-fun del     [k] [v] m   = Js_map_ffi.del     m
+fun delete  [k] [v] m k = Js_map_ffi.delete  m k
 fun entries [k] [v] m   = Js_map_ffi.entries m
 fun get     [k] [v] m k = Js_map_ffi.get     m k   
 fun has     [k] [v] m k = Js_map_ffi.has     m k
