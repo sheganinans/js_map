@@ -22,7 +22,7 @@ fun main () =
   vls <- Js_map.values js_m;
 
   Js_map.clear js_m;
-
+  
   sz2 <- Js_map.size js_m;
 
   return <xml>
