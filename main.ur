@@ -6,6 +6,7 @@ fun main () =
     <active code={
   js_m <- Js_map.new_map_with ((1,2) :: (3,4) :: [] : list (int*int));
 
+  h <- Js_map.get js_m 0;
   i <- Js_map.get js_m 1;
   j <- Js_map.get js_m 3;
   
@@ -26,6 +27,7 @@ fun main () =
   sz2 <- Js_map.size js_m;
 
   return <xml>
+    {[show h]}<br/>
     {[show i]}<br/>
     {[show j]}<br/>
     {[show has_0]}<br/>

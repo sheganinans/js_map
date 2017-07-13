@@ -7,7 +7,7 @@ val size    : k ::: Type -> v ::: Type -> js_map k v -> transaction int
 val clear   : k ::: Type -> v ::: Type -> js_map k v -> transaction unit
 val delete  : k ::: Type -> v ::: Type -> js_map k v -> k -> transaction unit
 val entries : k ::: Type -> v ::: Type -> js_map k v -> transaction (list (k * v))
-val get     : k ::: Type -> v ::: Type -> js_map k v -> k -> transaction v
+val get     : k ::: Type -> v ::: Type -> js_map k v -> k -> transaction (option v)
 val has     : k ::: Type -> v ::: Type -> js_map k v -> k -> transaction bool
 val keys    : k ::: Type -> v ::: Type -> js_map k v -> transaction (list k)
 val set     : k ::: Type -> v ::: Type -> js_map k v -> k -> v -> transaction unit
