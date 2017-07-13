@@ -1,7 +1,11 @@
-function getList(i) {
+function getList(f, i) {
     var acc = null;
-    Array.from(i).forEach(function(x) { acc = {_1 : x, _2 : acc}; });
+    Array.from(i).forEach(function(x) { acc = {_1 : f(x), _2 : acc}; });
     return acc; }
+
+function id(x) { return x; }
+
+function pair(x) { return {_1 : x[0], _2 : x[1]} }
 
 var Js_map = {
     new_map: function () { return function(_) { return new Map (); }},
@@ -20,11 +24,7 @@ var Js_map = {
     
     delete: function (m) { return function(k) { return function (_) { m.delete(k); }}},
     
-    entries: function (m) { return function (_) {
-	var acc = null;
-	Array.from(m.entries()).forEach(function(x) {
-	    acc = {_1 : {_1 : x[0], _2 : x[1]}, _2 : acc} });
-	return acc; }},
+    entries: function (m) { return function (_) { return getList(pair, m.entries()) }},
     
     forEach: function (m) { return function(f) { return m.forEach(f); }},
     
@@ -38,9 +38,9 @@ var Js_map = {
             return function (_) {
                 return m.has(k); }}},
     
-    keys: function (m) { return function (_) { return getList(m.keys()) }},
+    keys: function (m) { return function (_) { return getList(id, m.keys()) }},
     
     set: function (m) { return function(k) { return function(v) {
 	return function (_) { m.set(k,v); }}}},
     
-    values: function (m) { return function (_) { return getList(m.values()) }}}
+    values: function (m) { return function (_) { return getList(id, m.values()) }}}
