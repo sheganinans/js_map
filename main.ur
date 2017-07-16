@@ -4,7 +4,7 @@ fun show_pair [a ::: Type] [b ::: Type] (_ : show a) (_ : show b) : show (a * b)
 fun main () =
   return <xml><body>
     <active code={
-  js_m <- Js_map.new_map_with ((1,2) :: (3,4) :: []);
+  js_m <- Js_map.new_map_with ((1,2) :: (3,4) :: (5,6) :: []);
 
   h <- Js_map.get js_m 0;
   i <- Js_map.get js_m 1;
@@ -12,7 +12,7 @@ fun main () =
   
   has_0 <- Js_map.has js_m 0;
 
-  Js_map.delete js_m 0;
+  Js_map.delete js_m 5;
   
   sz <- Js_map.size js_m;
 
