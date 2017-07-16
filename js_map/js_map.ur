@@ -13,4 +13,4 @@ fun keys    [k] [v] m   = Js_map_ffi.keys    m
 fun set     [k] [v] m v = Js_map_ffi.set     m v
 fun values  [k] [v] m   = Js_map_ffi.values  m
 
-fun forEach [k] [v] m f = Js_map_ffi.forEach m f
+fun forEach [k] [v] m f = Js_map_ffi.forEach m (fn (k,v) => f k v)

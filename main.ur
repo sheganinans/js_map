@@ -22,7 +22,7 @@ fun main () =
   ent <- Js_map.entries js_m;
   vls <- Js_map.values js_m;
   
-  Js_map.forEach js_m (fn (k,v) => alert (show k); alert (show v));
+  Js_map.forEach js_m (fn k v => alert (show k); alert (show v));
   
   Js_map.clear js_m;
   
