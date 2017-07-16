@@ -21,22 +21,20 @@ fun main () =
   kys <- Js_map.keys js_m;
   ent <- Js_map.entries js_m;
   vls <- Js_map.values js_m;
-
+  
+  Js_map.forEach js_m (fn k v => alert "a"; alert (show k); alert (show v));
+  
   Js_map.clear js_m;
   
   sz2 <- Js_map.size js_m;
-
+    
   return <xml>
     {[case h of None => "None" | Some s => show s]}<br/>
-    {[show i]}<br/>
-    {[show j]}<br/>
+    {[show     i]}<br/>
+    {[show     j]}<br/>
     {[show has_0]}<br/>
-    {[show sz]}<br/>
-    {[show kys]}<br/>
-    {[show ent]}<br/>
-    {[show vls]}<br/>
-    {[show sz2]}<br/>
-  </xml>
-  }/>
-   </body></xml>
-  
+    {[show    sz]}<br/>
+    {[show   kys]}<br/>
+    {[show   ent]}<br/>
+    {[show   vls]}<br/>
+    {[show   sz2]}<br/></xml>}/></body></xml>

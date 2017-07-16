@@ -1,6 +1,16 @@
+// https://gist.github.com/sjoerdvisscher/3078744
+function curry(f) {
+    if (typeof f != "function" || f.length < 2) return f;
+    function go(f, args) {
+	return a => {
+	    var args1 = args.concat([a]);
+	    if (args1.length == f.length) return f.apply(this, args1);
+	    else                          return go(f, args1); }; }
+    return go(f, []); }
+
 function getList(f, i) {
     var acc = null;
-    Array.from(i).forEach(function(x) { acc = {_1 : f(x), _2 : acc}; });
+    Array.from(i).forEach(x => { acc = {_1 : f(x), _2 : acc}; });
     return acc }
 
 function id(x) { return x }
@@ -8,40 +18,35 @@ function id(x) { return x }
 function pair(x) { return {_1 : x[0], _2 : x[1]} }
 
 var Js_map = {
-    new_map: function () { return function(_) { return new Map () }},
+    new_map: curry((_1,_2) => { return new Map ()}),
     
-    new_map_with: function (init) {
+    new_map_with: curry ((init,_) => {
 	var acc = new Map ();
 	var curr = init;
 	while (curr != null) {
 	    acc.set (curr._1._1, curr._1._2);
 	    curr = curr._2; }
-	return function(_) { return acc };},
+	return acc }),
     
-    size: function (m) { return m.size },
+    size: m => { return m.size },
     
-    clear: function (m) { m.clear() },
+    clear: m => { m.clear() },
     
-    delete: function (m) { return function(k) { return function (_) { m.delete(k) }}},
+    delete: curry((m,k,_) => { m.delete(k) }),
     
-    entries: function (m) { return function (_) { return getList(pair, m.entries()) }},
+    entries: curry((m,_) => { return getList(pair, m.entries()) }),
     
-    forEach: function (m) { return function(f) { return m.forEach(f) }},
+    forEach: curry((m,f,_) => {
+	return m.forEach((v,k) => { execF(f,k); }) }),
     
-    get: function (m) {
-        return function(k) {
-            return function(_) {
-		var ret = m.get(k);
-                if (ret == undefined) { return null } else { return ret }}}},
+    get: curry((m,k,_) => {
+	var ret = m.get(k);
+        if (ret == undefined) { return null } else { return ret }}),
     
-    has: function (m) {
-        return function(k) {
-            return function (_) {
-                return m.has(k) }}},
+    has: curry((m,k,_) => { return m.has(k) }),
     
-    keys: function (m) { return function (_) { return getList(id, m.keys()) }},
+    keys: curry((m,_) => { return getList(id, m.keys()) }),
     
-    set: function (m) { return function(k) { return function(v) {
-	return function (_) { m.set(k,v); }}}},
+    set: curry((m,k,v,_) => { m.set(k,v); }),
     
-    values: function (m) { return function (_) { return getList(id, m.values()) }}}
+    values: curry((m,_) => { return getList(id, m.values()) })}

@@ -23,7 +23,9 @@ jsFunc Js_map_ffi.keys=Js_map.keys
 jsFunc Js_map_ffi.set=Js_map.set
 jsFunc Js_map_ffi.values=Js_map.values
 jsFunc Js_map_ffi.forEach=Js_map.forEach
+effectful Js_map_ffi.forEach
 file /js_map.js js_map.js
 script js_map.js
+lessSafeFfi
 
 js_map
