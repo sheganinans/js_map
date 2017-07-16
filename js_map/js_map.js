@@ -37,7 +37,7 @@ var Js_map = {
     entries: curry((m,_) => { return getList(pair, m.entries()) }),
     
     forEach: curry((m,f,_) => {
-	return m.forEach((v,k) => { execF(f,k); }) }),
+	return m.forEach((v,k) => { execF(execF(f,(k,v)); })); }),
     
     get: curry((m,k,_) => {
 	var ret = m.get(k);
