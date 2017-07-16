@@ -14,6 +14,6 @@ val set     : k ::: Type -> v ::: Type -> js_map -> k -> v -> transaction unit
 val values  :               v ::: Type -> js_map -> transaction (list v)
 
 val forEach  : k ::: Type -> v ::: Type ->
-	       js_map -> (k -> v -> transaction {}) -> transaction {}
+	       js_map -> (k * v -> transaction {}) -> transaction {}
 
 						  
